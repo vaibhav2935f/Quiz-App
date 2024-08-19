@@ -1,4 +1,4 @@
-package com.example.quizapp
+package com.example.quizapp.app.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
