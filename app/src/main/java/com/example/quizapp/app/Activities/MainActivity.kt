@@ -1,9 +1,10 @@
-package com.example.quizapp
+package com.example.quizapp.app.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.example.quizapp.R
 import com.example.quizapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,10 @@ class MainActivity : AppCompatActivity() {
     }
     fun setUpDrawerLayoput(){
         setSupportActionBar(binding.appBar)
-        actionBarDrawerToggle = ActionBarDrawerToggle(this,binding.mainDrawer,R.string.app_name,R.string.app_name)
+        actionBarDrawerToggle = ActionBarDrawerToggle(this,binding.mainDrawer,
+            R.string.app_name,
+            R.string.app_name
+        )
         actionBarDrawerToggle.syncState()
     }
 

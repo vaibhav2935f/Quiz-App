@@ -1,10 +1,9 @@
-package com.example.quizapp
+package com.example.quizapp.app.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.quizapp.databinding.ActivityLoginBinding
 import com.example.quizapp.databinding.ActivityLoginintroBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -28,7 +27,7 @@ class Loginintro : AppCompatActivity() {
     private fun redirect(name:String){
         val intent:Intent = when(name){
             "LOGIN" -> Intent(this, loginActivity::class.java)
-            "MAIN" -> Intent(this,MainActivity::class.java)
+            "MAIN" -> Intent(this, MainActivity::class.java)
             else -> throw  Exception("no path exists")
         }
         startActivity(intent)
