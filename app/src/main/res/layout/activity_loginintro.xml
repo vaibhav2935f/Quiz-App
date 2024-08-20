@@ -24,11 +24,10 @@
         android:layout_height="wrap_content"
         android:text="WELCOME TO QUIZ MASTER"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/textloginSubHeader" _toBottomOf=""
+        app:layout_constraintBottom_toTopOf="@id/textloginSubHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="319dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="319dp"/>
 
     <ImageView
         app:layout_goneMarginBottom="8dp"

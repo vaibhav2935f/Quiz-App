@@ -19,11 +19,9 @@ object colorPicker {
 
 
     var currentColorIndex = 0
-    fun getColor(): String {
-
+    fun getColor():String {
         currentColorIndex = (currentColorIndex + 1) % colors.size
-
-        return colors [currentColorIndex]
+        return colors[currentColorIndex]
 
     }
 }

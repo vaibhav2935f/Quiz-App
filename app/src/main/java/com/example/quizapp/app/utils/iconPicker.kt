@@ -15,9 +15,7 @@ object iconPicker {
     )
     var currentIcon = 0
     fun getIcon(): Int {
-
         currentIcon = (currentIcon + 1) % icons.size
-
         return icons[currentIcon]
 
     }
