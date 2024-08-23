@@ -58,6 +58,9 @@ class MainActivity : AppCompatActivity() {
                 return@addSnapshotListener
             }
             Log.d("Data",value.toObjects(Quiz::class.java).toString())
+            quizList.clear()
+            quizList.addAll(value.toObjects(Quiz::class.java))
+            adapter.notifyDataSetChanged()
         }
 
     }
