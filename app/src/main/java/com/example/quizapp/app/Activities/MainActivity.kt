@@ -1,5 +1,6 @@
 package com.example.quizapp.app.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -11,9 +12,11 @@ import com.example.quizapp.R
 import com.example.quizapp.app.adapter.QuizAdapter
 import com.example.quizapp.app.models.Quiz
 import com.example.quizapp.databinding.ActivityMainBinding
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        populateDummyDate()
         setUpView()
     }
+
 
     private fun populateDummyDate() {
         quizList.add(Quiz(id = "12-10-2024","12-10-2024"))
@@ -48,8 +51,31 @@ class MainActivity : AppCompatActivity() {
         setUpFirestore()
         setUpRecyclerView()
         setUpDrawerLayout()
+        setUpDatePicker()
     }
-        private fun setUpFirestore() {
+
+    private fun setUpDatePicker() {
+        binding.btnDatePicker.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker().build()
+            datePicker.show(supportFragmentManager, "DatePicker")
+            datePicker.addOnPositiveButtonClickListener {
+                Log.d("DATEPICKER", datePicker.headerText)
+                val dateFormatter = SimpleDateFormat("dd-mm-yyyy")
+                val date = dateFormatter.format(Date(it))
+                val intent = Intent(this, QuestionActivity::class.java)
+                intent.putExtra("DATE", date)
+                startActivity(intent)
+            }
+            datePicker.addOnNegativeButtonClickListener {
+                Log.d("DATEPICKER", datePicker.headerText)
+            }
+            datePicker.addOnCancelListener {
+                Log.d("DATEPICKER", "date picker  cancelled")
+            }
+        }
+    }
+
+    private fun setUpFirestore() {
         firestore =FirebaseFirestore.getInstance()
         val collectionReference: CollectionReference = firestore.collection("quizzes")
         collectionReference.addSnapshotListener {value, error->
